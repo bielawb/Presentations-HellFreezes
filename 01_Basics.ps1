@@ -1,4 +1,5 @@
 # Basics
+    Set-ZoomLevel -Level 2
     $xpath = "//service[port[@port < 1024 and @protocol = 'tcp']]"
     Select-Xml -Path /usr/lib/firewalld/services/*.xml -XPath $xpath |
         ForEach-Object { $_.Node } |
