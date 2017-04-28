@@ -22,6 +22,7 @@
     Get-Command -Module PsIni
     Get-IniContent -FilePath /etc/yum.repos.d/vscode.repo |
         Format-Custom
+    Remove-Item -LiteralPath ~/test.repo -ErrorAction SilentlyContinue
     @{
         code = [ordered]@{
             name = 'Visual Studio Code'
@@ -31,7 +32,7 @@
             gpgkey = 'https://packages.microsoft.com/keys/microsoft.asc'
         }
     } | Out-IniFile -FilePath ~/test.repo
-    cat ~/test.repo
+    Get-Content ~/test.repo
 
 # Cloud
     Import-Module AzureRM.Profile.NetCore.Preview
