@@ -3,9 +3,11 @@
     $uri = 'https://api.github.com/repos/PowerShell/PowerShell/issues'
     Invoke-RestMethod -Uri $uri | ForEach-Object { $_ } |
         Format-Table -Property Title, Number, Created_At
+
 # Fixed!
     Get-Process -Name code | Select-Object -ExpandProperty 
-# Pull-requests
+    sudo yum -y update powershell
+    # Pull-requests
     Start-Process opera https://github.com/PowerShell/PowerShell/pull/2014
     (Invoke-RestMethod -Uri $uri/2038) | Format-List Title, Body
 # Fixed version
