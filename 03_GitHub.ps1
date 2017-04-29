@@ -7,7 +7,7 @@
 # Fixed!
     Get-Process -Name code | Select-Object -ExpandProperty 
     sudo yum -y update powershell
-    # Pull-requests
+# Pull-requests
     Start-Process opera https://github.com/PowerShell/PowerShell/pull/2014
     (Invoke-RestMethod -Uri $uri/2038) | Format-List Title, Body
 # Fixed version
