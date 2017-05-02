@@ -13,5 +13,5 @@
 # Fixed version
     Join-Path /etc yum.repos.d vscode.repo | Get-ChildItem
 # More sessions...?
-    Get-AgendaItem -Pattern Linux |
-        Format-Table -Property SpeakerList, StartTime, Room, Title, Audience
+    Get-AgendaItem -Pattern 'Linux|xPlat' |
+        Format-Table -Property SpeakerList, StartTime, Room, Title, Audience, TracksList

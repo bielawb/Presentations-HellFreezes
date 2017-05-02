@@ -42,16 +42,3 @@ function Set-ZoomLevel {
         Set-Content -LiteralPath $configPath -Encoding Ascii
 }
 
-function Get-AgendaItem {
-    param (
-        [String]$Pattern,
-        [DateTime]$After = $(Get-Date)
-    )
-    (
-        (Invoke-WebRequest -UseBasicParsing -Uri powershell.love).Content.SubString(1) |
-            ConvertFrom-Json
-    ).where{
-        $_.Description -match $Pattern -and
-        $After -lt $_.StartTime
-    } | Sort-Object -Property { [datetime]$_.StartTime }
-}
