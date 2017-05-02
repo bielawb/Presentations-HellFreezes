@@ -13,15 +13,21 @@ function Set-ZoomLevel {
         )]
         [String]$Mode = 'Merge'
     )
-    $configPath = switch ($Scope) {
+    $configFolder = switch ($Scope) {
         Workspace {
-            "$($psEditor.Workspace.Path)/.vscode/settings.json"
+            "$($psEditor.Workspace.Path)/.vscode"
         }
         User {
-            $configFolder = Split-Path -LiteralPath $env:VSCODE_IPC_HOOK
-            "$configFolder/User/settings.json"
+            $userConfigFolder = Split-Path -LiteralPath $env:VSCODE_IPC_HOOK
+            "$userConfigFolder/User"
         }
     }
+
+    if (-not (Test-Path -LiteralPath $configFolder)) {
+        New-Item -Path $configFolder -ItemType Directory -Force
+    }
+    $configPath = Join-Path -Path $configFolder -ChildPath settings.json
+
     $currentConfig = if ($Mode -eq 'Merge' -and (Test-Path -LiteralPath $configPath)) {
         Get-Content -LiteralPath $configPath -Raw | ConvertFrom-Json
     } else {
