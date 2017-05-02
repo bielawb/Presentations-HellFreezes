@@ -8,13 +8,19 @@ p "${GREEN}# Make sure you have repo configured"
 pe 'cat /etc/yum.repos.d/microsoft.repo'
 p "${GREEN}# When repo is configured correctly, we should be able to use yum..."
 pe 'yum whatprovides powershell'
+wait
+clear
 p "${GREEN}# We can also install/update powershell using yum"
 pe 'yum install powershell'
 p "${GREEN}# As expected... we need to be root/su to do that!"
 pe 'sudo yum install powershell'
+wait
+clear
 p "${GREEN}# No ISE for Linux - but hey, we have vs code!"
 pe 'cat /etc/yum.repos.d/vscode.repo'
 pe 'yum whatprovides code'
+wait
+clear
 pe 'sudo yum install code'
 p "${GREEN}# OK, I was cheating a bit... ;)"
 p "${GREEN}# We also need powershell extensions - watch out for breaking changes though!"
@@ -23,4 +29,4 @@ p "${GREEN}# Not ready to install alpha 18 - we will do that later..."
 p "${GREEN}# Thus we need to use 0.12.1"
 pe 'code --list-extensions --show-versions | grep PowerShell'
 p "${GREEN}# We have what we need... demo time! "
-code ~/PSConfEU
+wmctrl -s 0
