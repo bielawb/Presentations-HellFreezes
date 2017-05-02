@@ -12,3 +12,6 @@
     (Invoke-RestMethod -Uri $uri/2038) | Format-List Title, Body
 # Fixed version
     Join-Path /etc yum.repos.d vscode.repo | Get-ChildItem
+# More sessions...?
+    Get-AgendaItem -Pattern Linux |
+        Format-Table -Property SpeakerList, StartTime, Room, Title, Audience
